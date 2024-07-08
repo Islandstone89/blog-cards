@@ -1,0 +1,209 @@
+
+/* CSS RESET */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* Avoid orphans on paragraphs */
+p {
+    text-wrap: pretty;
+}
+
+/* Remove default link styling */
+a {
+  text-decoration-skip-ink: auto;
+  text-decoration: none;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* FONTS */
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(assets/fonts/Roboto-Light.woff2) format("woff2");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(assets/fonts/Roboto-Regular.woff2) format("woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(assets/fonts/Roboto-Medium.woff2) format("woff2");
+    font-weight: 500;
+}
+
+/* CUSTOM PROPERTIES */
+
+:root {
+    /* COLORS */
+
+    --clr-bg: #f7f8fc;
+    --clr-white: #fff;
+    --clr-aqua: #47bdd4;
+    --clr-purple: #5e76bf;
+    --clr-pink: #cd5b9f;
+    --clr-dark-blue: #21293e;
+
+    /* TYPOGRAPHY */
+
+    --ff-primary: 'Roboto', sans-serif;
+    --fs-small: .75rem;
+    --fw-300: 300;
+    --fw-500: 500;
+}
+
+/* UTILITIES */
+
+.flow {
+    --flow-space: 1rem;
+}
+
+.flow > * + * {
+    margin-block-start: var(--flow-space);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+    padding: 1rem;
+    background-color: var(--clr-bg);
+    color: var(--clr-dark-blue);
+    font-family: var(--ff-primary);
+}
+
+.main {
+    max-width: 60rem;
+    margin-inline: auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+
+   /*  @media (width > 50rem) {
+        grid-template-columns: 1fr 1fr 1fr;
+    } */
+}
+
+.card {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    background-color: var(--clr-white);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card__image{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card__content {
+    padding: 2rem 1rem;
+}
+
+.tag {
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    width: fit-content;
+    border-radius: 20px;
+    padding: .25em .75em;
+}
+
+.technology {
+    background-color: var(--clr-aqua);
+}
+
+.popular {
+    background-color: var(--clr-purple);
+}
+
+.design {
+    background-color: var(--clr-pink);
+}
+
+.author {
+    --flow-space: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    gap: .5rem;
+}
+
+.author__image {
+    border-radius: 50%;
+}
+
+.author__name {
+    font-weight: var(--fw-500);
+}
